@@ -31,6 +31,3 @@ To view the source code locally, simply clone the repository:
 ```bash
 git clone [https://github.com/jackb-22/Housing-Database.git](https://github.com/jackb-22/Housing-Database.git)
 ```
-
-![Personalized Dashboard](images/screenshot_2.png)
-*Caption: The responsive frontend dashboard for executing complex data queries.*
