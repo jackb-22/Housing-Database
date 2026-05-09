@@ -2,6 +2,9 @@
 
 A comprehensive, full-stack Database Management System engineered specifically for Bard College at Simon's Rock. This application provides a secure and dynamic platform to manage, organize, and query complex college housing data.
 
+## Try It!
+Live at https://jsb2302.pythonanywhere.com/
+
 ## What It Does
 
 At its core, this application translates raw relational database information into an intuitive, accessible web interface. 
