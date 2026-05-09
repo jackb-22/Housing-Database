@@ -1,36 +1,131 @@
 # Simon's Rock Housing Database
 
-A comprehensive, full-stack Database Management System engineered specifically for Bard College at Simon's Rock. This application provides a secure and dynamic platform to manage, organize, and query complex college housing data.
+A Django-based housing management system for organizing and querying college housing data. The app provides a web interface for viewing students, rooms, buildings, leases, room availability, and community director assignments.
 
-## Try It!
-Live at https://jsb2302.pythonanywhere.com/
+## Live Demo
+
+Live demo: https://jsb2302.pythonanywhere.com/
+
+Demo admin login:
+
+```text
+Username: demo_admin
+Password: demo123
+```
+
+Demo community director login:
+
+```text
+Username: Taylor Demo
+Password: 10001
+```
+
+This public deployment uses sanitized demo data only.
 
 ## What It Does
 
-At its core, this application translates raw relational database information into an intuitive, accessible web interface. 
+This project turns relational housing data into an interactive web application. Instead of manually querying the database, users can log in and navigate through dashboards that display housing assignments, dorm capacity, student records, room availability, and lease information.
 
-* **Secure Access:** Users navigate through a secure authentication pipeline to access the system, ensuring data privacy and role-based access.
-* **Personalized Dashboards:** The system generates personalized multi-page views tailored to the user, displaying relevant housing assignments, dormitory capacities, and student profiles.
-* **Dynamic Data Querying:** Users can perform complex searches—such as filtering students by housing status or identifying available beds in specific dorms—without needing to write a single line of SQL. The frontend intuitively translates user inputs into complex backend queries and renders the results dynamically.
+Key features include:
 
-## How It Works
-
-This project leverages the Django web framework to bridge a highly structured SQLite database with a responsive frontend.
-
-* **Strict Relational Architecture:** The backend database is built on a fully normalized relational schema to eliminate data redundancy. It utilizes complex foreign keys to establish strict, logical relationships between students, rooms, and dormitories.
-* **Automated Data Integrity:** To prevent data anomalies (such as overbooking a room or creating orphaned student records), the database employs custom automated triggers and indexing. This enforces strict business logic at the lowest level, making the system highly reliable.
-* **Dynamic Rendering:** The application uses Django's templating engine to generate HTML pages on the fly. JavaScript and CSS are layered on top to create a responsive user interface that updates seamlessly based on the SQLite data. Furthermore, Django's built-in session management is utilized to preserve user states across different pages safely.
+- Role-based login flow for admin users and community directors
+- Admin dashboard for viewing and managing housing-related records
+- Community director views filtered to relevant building and room data
+- Search and query functionality for students, rooms, leases, and housing status
+- SQLite-backed relational data model connecting students, rooms, buildings, leases, and community directors
+- Dynamic HTML rendering using Django templates
 
 ## Tech Stack
 
-* **Backend:** Python, Django Web Framework
-* **Database:** SQLite (Custom automated triggers, indexing, and foreign key constraints)
-* **Frontend:** HTML5, CSS3, Vanilla JavaScript, Django Templates
+- **Backend:** Python, Django
+- **Database:** SQLite
+- **Frontend:** HTML, CSS, JavaScript, Django Templates
+- **Deployment:** PythonAnywhere
 
-## Getting the Code
+## Project Structure
 
-To view the source code locally, simply clone the repository:
+```text
+Housing-Database/
+└── housing/
+    └── finalprj/
+        ├── manage.py
+        ├── db.sqlite3
+        ├── finalprj/
+        │   ├── settings.py
+        │   ├── urls.py
+        │   └── wsgi.py
+        └── housingapp/
+            ├── models.py
+            ├── views.py
+            ├── urls.py
+            └── templates/
+```
+
+The main Django project is located in:
+
+```text
+housing/finalprj/
+```
+
+## Running Locally
+
+Clone the repository:
 
 ```bash
-git clone [https://github.com/jackb-22/Housing-Database.git](https://github.com/jackb-22/Housing-Database.git)
+git clone https://github.com/jackb-22/Housing-Database.git
+cd Housing-Database/housing/finalprj
 ```
+
+Create and activate a virtual environment:
+
+```bash
+python -m venv .venv
+source .venv/bin/activate
+```
+
+Install dependencies:
+
+```bash
+pip install --upgrade pip
+pip install -r requirements.txt
+```
+
+Run migrations:
+
+```bash
+python manage.py migrate
+```
+
+Start the development server:
+
+```bash
+python manage.py runserver
+```
+
+Then open:
+
+```text
+http://127.0.0.1:8000/
+```
+and utilize the same credentials as the live demo.
+
+## Database Model
+
+The application uses a relational SQLite schema with the following core entities:
+
+- **Building** — stores dorm/building information
+- **Room** — stores room number, capacity, status, and building assignment
+- **Student** — stores student records
+- **Lease** — links students to room assignments over a date range
+- **CommunityDirector** — links staff users to assigned buildings
+
+These models are connected through Django foreign keys, allowing the app to query housing relationships across students, rooms, buildings, and leases.
+
+## Deployment Notes
+
+The live version is deployed on PythonAnywhere using:
+
+- Django application served through WSGI
+- SQLite database with sanitized demo data
+- Static files collected for production use
+- `DEBUG = False` for the public deployment
