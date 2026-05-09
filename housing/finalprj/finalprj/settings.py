@@ -23,28 +23,17 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-!$9e348a$fy4+m5p_9l3=r^tenpsp&qn^(@+-&rmaae!2h4bvc'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['*']
-ORS_ALLOW_CREDENTIALS = True
+ALLOWED_HOSTS = [
+    "jsb2302.pythonanywhere.com",
+    "localhost",
+    "127.0.0.1",
+]
 
-CORS_ORIGIN_ALLOW_ALL = True
-
-CORS_ALLOW_CREDENTIALS = True
-
-
-CSRF_TRUSTED_ORIGINS = ['https://front.bluemix.net/']
-
-CORS_REPLACE_HTTPS_REFERER = True
-
-CSRF_COOKIE_DOMAIN = 'bluemix.net'
-
-CORS_ORIGIN_WHITELIST = (
-    'https://front.bluemix.net/',
-    'front.bluemix.net',
-    'bluemix.net',
-)
-
+CSRF_TRUSTED_ORIGINS = [
+    "https://jsb2302.pythonanywhere.com",
+]
 # Application definition
 
 INSTALLED_APPS = [
