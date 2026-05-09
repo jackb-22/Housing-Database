@@ -14,9 +14,7 @@ def login_view(request):
         username = request.POST.get("username")
         password = request.POST.get("password")
         
-        print(f"Entered username: {username}, Entered password: {password}")
-
-        if username == "admin" and password == "12345":
+        if username == "demo_admin" and password == "demo123":
             print("Admin login successful")
             request.session['user_type'] = 'admin'
             return redirect('admin_dashboard')
